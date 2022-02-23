@@ -91,6 +91,8 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
+    this.season = ["summer", "fall", "winter", "spring"];
+    this.currentSeason = 0;
     // ✨ initialize whatever properties are needed
   }
 
@@ -108,6 +110,24 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    const result = this.season[this.currentSeason];
+    this.currentSeason++;
+    if (result === this.season[3]) {
+      this.currentSeason = 0;
+    }
+    return result;
+    // const diffSeason = [];
+    // if (this.season === "summer") {
+    //   //diffSeason.push("fall");
+    //   return this.season[1];
+    // } else if (diffSeason[0] === "fall") {
+    //   diffSeason.push("winter");
+    // } else if (diffSeason === "winter") {
+    //   diffSeason.push("spring");
+    // } else {
+    //   diffSeason.push("summer");
+    // }
+    // return diffSeason[0];
   }
 }
 
