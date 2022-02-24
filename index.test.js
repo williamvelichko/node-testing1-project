@@ -100,14 +100,44 @@ describe("[Exercise 5] Seasons", () => {
 });
 
 describe("[Exercise 6] Car", () => {
-  // let focus
-  // beforeEach(() => {
-  //   focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
-  // })
-  // test('[15] driving the car returns the updated odometer', () => {})
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  let focus;
+  beforeEach(() => {
+    focus = new utils.Car("focus", 20, 30); // each test must start with a fresh car
+  });
+  test("[15] driving the car returns the updated odometer", () => {
+    expect(focus.drive(100)).toBe(100);
+    expect(focus.drive(100)).toBe(200);
+    expect(focus.drive(100)).toBe(300);
+  });
+  test("[16] driving the car uses gas", () => {
+    focus.drive(600);
+    expect(focus.drive(1)).toBe(600);
+    expect(focus.drive(1)).toBe(600);
+    expect(focus.drive(1)).toBe(600);
+    expect(focus.tank).toBe(0);
+  });
+  test("[17] refueling allows to keep driving", () => {
+    // focus.drive(800);
+    // expect(focus.tank).toBe(0);
+    // expect(focus.odometer).toBe(600);
+    // expect(focus.tank).toBe(20);
+    // expect(focus.odometer).toBe(600);
+    // focus.drive(600);
+    // //focus.drive(1);
+    // focus.refuel(10);
+    // expect(focus.odometer).toBe(600);
+    // expect(focus.tank).toBe(0);
+
+    expect(focus.drive(600)).toBe(600); // returns 600
+    expect(focus.drive(1)).toBe(600); // returns 600 (no distance driven as tank is empty)
+    expect(focus.refuel(30)).toBe(1200); // returns 600 (tank only holds 20)
+  });
+  test("[18] adding fuel to a full tank has no effect", () => {
+    // focus.drive();
+    // expect(focus.odometer).toBe(600);
+    expect(focus.drive(0)).toBe(0); // returns 600 (no distance driven as tank is empty)
+    expect(focus.refuel(20)).toBe(600); // returns 600 (tank only holds 20)
+  });
 });
 
 describe("[Exercise 7] isEvenNumberAsync", () => {
